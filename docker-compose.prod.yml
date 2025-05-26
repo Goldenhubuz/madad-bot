@@ -1,0 +1,16 @@
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: webhook_bot
+    ports:
+      - "1024:1024"
+    env_file:
+      - ./core/data/.env
+    volumes:
+      - .:/usr/src/app
+    restart: always
+    user: root
+    environment:
+      - ENV=production
